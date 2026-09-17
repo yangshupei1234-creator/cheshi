@@ -1,0 +1,18 @@
+name: GitHub Connection Test
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify test project
+        run: |
+          test -f test-project/index.html
+          test -f test-project/app.js
+          test -f test-project/README.md
+          echo "GitHub connection test passed"
